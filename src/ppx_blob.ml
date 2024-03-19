@@ -6,7 +6,7 @@ let location_errorf ~loc =
   )
 
 let find_file_path ~loc file_name =
-  let dirname = Ocaml_common.Location.absolute_path loc.Ocaml_common.Location.loc_start.pos_fname |> Filename.dirname in
+  let dirname = loc.Ocaml_common.Location.loc_start.pos_fname |> Filename.dirname in
   let absolute_path = Filename.concat dirname file_name in
   List.find Sys.file_exists [absolute_path; file_name]
 
